@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
   height: 70px;
@@ -14,6 +14,7 @@ export const HeaderContainer = styled.header`
     margin-bottom: 20px;
   }
 `;
+
 export const BrandContainer = styled(Link)`
   height: 100%;
   display: flex;
@@ -75,4 +76,4 @@ export const OptionLink = styled(Link)`
   cursor: pointer;
 `;
 
-OptionLink.displayName = "OptionLink";
+OptionLink.displayName = 'OptionLink';

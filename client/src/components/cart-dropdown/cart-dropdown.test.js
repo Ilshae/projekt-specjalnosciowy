@@ -14,7 +14,7 @@ describe('CartDropdown component', () => {
 
   beforeEach(() => {
     mockHistory = {
-      push: jest.fn()
+      push: jest.fn(),
     };
 
     mockDispatch = jest.fn();
@@ -22,7 +22,7 @@ describe('CartDropdown component', () => {
     const mockProps = {
       cartItems: mockCartItems,
       history: mockHistory,
-      dispatch: mockDispatch
+      dispatch: mockDispatch,
     };
 
     wrapper = shallow(<CartDropdown {...mockProps} />);
@@ -46,7 +46,7 @@ describe('CartDropdown component', () => {
     const mockProps = {
       cartItems: [],
       history: mockHistory,
-      dispatch: mockDispatch
+      dispatch: mockDispatch,
     };
 
     const newWrapper = shallow(<CartDropdown {...mockProps} />);

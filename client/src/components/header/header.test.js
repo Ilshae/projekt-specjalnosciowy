@@ -14,33 +14,25 @@ describe('Header component', () => {
     const mockProps = {
       hidden: true,
       currentUser: {
-        uid: '123'
+        uid: '123',
       },
-      signOutStart: mockSignOutStart
+      signOutStart: mockSignOutStart,
     };
 
     wrapper = shallow(<Header {...mockProps} />);
   });
 
-  it('should render FormInput component', () => {
+  it('should render Header component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   describe('if currentUser is present', () => {
     it('should render sign out link', () => {
-      expect(
-        wrapper
-          .find('OptionLink')
-          .at(2)
-          .text()
-      ).toBe('SIGN OUT');
+      expect(wrapper.find('OptionLink').at(1).text()).toBe('SIGN OUT');
     });
 
     it('should call signOutStart method when link is clicked', () => {
-      wrapper
-        .find('OptionLink')
-        .at(2)
-        .simulate('click');
+      wrapper.find('OptionLink').at(1).simulate('click');
 
       expect(mockSignOutStart).toHaveBeenCalled();
     });
@@ -51,17 +43,12 @@ describe('Header component', () => {
       const mockProps = {
         hidden: true,
         currentUser: null,
-        signOutStart: mockSignOutStart
+        signOutStart: mockSignOutStart,
       };
 
       const newWrapper = shallow(<Header {...mockProps} />);
 
-      expect(
-        newWrapper
-          .find('OptionLink')
-          .at(2)
-          .text()
-      ).toBe('SIGN IN');
+      expect(newWrapper.find('OptionLink').at(1).text()).toBe('SIGN IN');
     });
   });
 
@@ -71,12 +58,12 @@ describe('Header component', () => {
     });
   });
 
-  describe('if currentUser is null', () => {
+  describe('if hidden is false', () => {
     it('should render CartDropdown', () => {
       const mockProps = {
         hidden: false,
         currentUser: null,
-        signOutStart: mockSignOutStart
+        signOutStart: mockSignOutStart,
       };
 
       const newWrapper = shallow(<Header {...mockProps} />);
