@@ -11,11 +11,11 @@ describe('CollectionPreview component', () => {
 
   beforeEach(() => {
     mockMatch = {
-      path: '/shop'
+      path: '/shop',
     };
 
     mockHistory = {
-      push: jest.fn()
+      push: jest.fn(),
     };
 
     const mockProps = {
@@ -23,7 +23,7 @@ describe('CollectionPreview component', () => {
       history: mockHistory,
       routeName: mockRouteName,
       title: 'hats',
-      items: []
+      items: [],
     };
 
     wrapper = shallow(<CollectionPreview {...mockProps} />);

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CollectionPreviewContainer = styled.article`
   display: flex;
@@ -20,7 +20,7 @@ export const TitleContainer = styled.h1`
   }
 `;
 
-TitleContainer.displayName = "TitleContainer";
+TitleContainer.displayName = 'TitleContainer';
 
 export const PreviewContainer = styled.div`
   display: flex;

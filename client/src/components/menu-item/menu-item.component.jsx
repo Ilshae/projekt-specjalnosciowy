@@ -1,12 +1,12 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import {
   MenuItemContainer,
   BackgroundImageContainer,
   ContentContainer,
   ContentTitle,
-} from "./menu-item.styles";
+} from './menu-item.styles';
 
 export const MenuItem = ({ title, imageUrl, history, linkUrl, match }) => (
   <MenuItemContainer onClick={() => history.push(`${match.url}${linkUrl}`)}>

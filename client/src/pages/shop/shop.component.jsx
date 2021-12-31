@@ -38,11 +38,8 @@ export const ShopPage = ({ fetchCollectionsStart, match }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
+const mapDispatchToProps = (dispatch) => ({
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(ShopPage);
+export default connect(null, mapDispatchToProps)(ShopPage);

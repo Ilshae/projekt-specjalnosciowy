@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MenuItemContainer = styled.section`
   height: 380px;
@@ -42,7 +42,7 @@ export const MenuItemContainer = styled.section`
   }
 `;
 
-MenuItemContainer.displayName = "MenuItemContainer";
+MenuItemContainer.displayName = 'MenuItemContainer';
 
 export const BackgroundImageContainer = styled.div`
   width: 100%;
@@ -52,7 +52,7 @@ export const BackgroundImageContainer = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-BackgroundImageContainer.displayName = "BackgroundImageContainer";
+BackgroundImageContainer.displayName = 'BackgroundImageContainer';
 
 export const ContentContainer = styled.div`
   height: 90px;

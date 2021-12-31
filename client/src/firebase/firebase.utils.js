@@ -1,15 +1,15 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 const config = {
-  apiKey: "AIzaSyCG6raJKh6OKLf6k_oBSJQJnuaSSjRTFTE",
-  authDomain: "ingrid-24c53.firebaseapp.com",
-  projectId: "ingrid-24c53",
-  storageBucket: "ingrid-24c53.appspot.com",
-  messagingSenderId: "357360718817",
-  appId: "1:357360718817:web:968cff93e4b78c926678a0",
-  measurementId: "G-R45DNH16G8",
+  apiKey: 'AIzaSyCG6raJKh6OKLf6k_oBSJQJnuaSSjRTFTE',
+  authDomain: 'ingrid-24c53.firebaseapp.com',
+  projectId: 'ingrid-24c53',
+  storageBucket: 'ingrid-24c53.appspot.com',
+  messagingSenderId: '357360718817',
+  appId: '1:357360718817:web:968cff93e4b78c926678a0',
+  measurementId: 'G-R45DNH16G8',
 };
 
 firebase.initializeApp(config);
@@ -32,7 +32,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       });
     } catch (error) {
-      console.log("error creating user", error.message);
+      console.log('error creating user', error.message);
     }
   }
 
@@ -40,11 +40,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 };
 
 export const getUserCartRef = async (userId) => {
-  const cartsRef = firestore.collection("carts").where("userId", "==", userId);
+  const cartsRef = firestore.collection('carts').where('userId', '==', userId);
   const snapShot = await cartsRef.get();
 
   if (snapShot.empty) {
-    const cartDocRef = firestore.collection("carts").doc();
+    const cartDocRef = firestore.collection('carts').doc();
     await cartDocRef.set({ userId, cartItems: [] });
     return cartDocRef;
   } else {
@@ -98,7 +98,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: "select_account" });
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;

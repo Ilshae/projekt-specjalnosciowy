@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CheckoutItemContainer = styled.section`
   width: 100%;
@@ -49,7 +49,7 @@ export const QuantityContainer = styled(TextContainer)`
   }
 `;
 
-QuantityContainer.displayName = "QuantityContainer";
+QuantityContainer.displayName = 'QuantityContainer';
 
 export const RemoveButtonContainer = styled.div`
   padding-left: 12px;
@@ -60,4 +60,4 @@ export const RemoveButtonContainer = styled.div`
   }
 `;
 
-RemoveButtonContainer.displayName = "RemoveButtonContainer";
+RemoveButtonContainer.displayName = 'RemoveButtonContainer';

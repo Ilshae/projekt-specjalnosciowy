@@ -13,11 +13,11 @@ describe('MenuItem component', () => {
 
   beforeEach(() => {
     mockMatch = {
-      url: '/shop'
+      url: '/shop',
     };
 
     mockHistory = {
-      push: jest.fn()
+      push: jest.fn(),
     };
 
     const mockProps = {
@@ -26,7 +26,7 @@ describe('MenuItem component', () => {
       linkUrl,
       size,
       title: 'hats',
-      imageUrl
+      imageUrl,
     };
 
     wrapper = shallow(<MenuItem {...mockProps} />);

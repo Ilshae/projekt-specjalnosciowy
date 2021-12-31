@@ -10,7 +10,7 @@ describe('CollectionPage', () => {
   beforeEach(() => {
     const mockCollection = {
       items: mockItems,
-      title: 'Test'
+      title: 'Test',
     };
 
     wrapper = shallow(<CollectionPage collection={mockCollection} />);

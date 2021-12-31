@@ -5,7 +5,7 @@ import WithSpinner from './with-spinner.component';
 import Spinner from '../spinner/spinner.component';
 
 describe('WithSpinner HOC', () => {
-  const TestComponent = () => <div className='test' />;
+  const TestComponent = () => <div className="test" />;
   const WrappedComponent = WithSpinner(TestComponent);
 
   describe('if loading is true', () => {

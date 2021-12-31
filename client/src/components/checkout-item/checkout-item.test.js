@@ -19,11 +19,11 @@ describe('CheckoutItem component', () => {
         imageUrl: 'www.testImage.com',
         price: 10,
         name: 'hats',
-        quantity: 2
+        quantity: 2,
       },
       clearItem: mockClearItem,
       addItem: mockAddItem,
-      removeItem: mockRemoveItem
+      removeItem: mockRemoveItem,
     };
 
     wrapper = shallow(<CheckoutItem {...mockProps} />);
@@ -39,19 +39,13 @@ describe('CheckoutItem component', () => {
   });
 
   it('should call addItem when left arrow is clicked', () => {
-    wrapper
-      .find('QuantityContainer')
-      .childAt(0)
-      .simulate('click');
+    wrapper.find('QuantityContainer').childAt(0).simulate('click');
 
     expect(mockRemoveItem).toHaveBeenCalled();
   });
 
   it('should call addItem when right arrow is clicked', () => {
-    wrapper
-      .find('QuantityContainer')
-      .childAt(2)
-      .simulate('click');
+    wrapper.find('QuantityContainer').childAt(2).simulate('click');
 
     expect(mockAddItem).toHaveBeenCalled();
   });

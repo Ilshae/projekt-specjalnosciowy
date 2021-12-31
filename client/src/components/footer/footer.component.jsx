@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { FooterContainer, AuthorContainer } from "./footer.styles";
+import { FooterContainer, AuthorContainer } from './footer.styles';
 
 export const Footer = () => (
   <FooterContainer>

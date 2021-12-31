@@ -17,9 +17,9 @@ describe('CollectionItem component', () => {
       item: {
         imageUrl: imageUrl,
         price: mockPrice,
-        name: mockName
+        name: mockName,
       },
-      addItem: mockAddItem
+      addItem: mockAddItem,
     };
 
     wrapper = shallow(<CollectionItem {...mockProps} />);

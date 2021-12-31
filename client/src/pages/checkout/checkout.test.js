@@ -6,7 +6,7 @@ let wrapper;
 beforeEach(() => {
   const mockProps = {
     cartItems: [],
-    total: 100
+    total: 100,
   };
 
   wrapper = shallow(<CheckoutPage {...mockProps} />);

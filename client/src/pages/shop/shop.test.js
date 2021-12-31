@@ -11,8 +11,8 @@ export const createMockStore = ({ state, reducers }) => {
   return {
     ...store,
     persistor: {
-      persist: () => null
-    }
+      persist: () => null,
+    },
   };
 };
 
@@ -24,31 +24,31 @@ describe('ShopPage', () => {
   beforeEach(() => {
     const mockReducer = (
       state = {
-        isFetching: true
+        isFetching: true,
       },
       action
     ) => state;
 
     const mockState = {
       shop: {
-        isFetching: true
-      }
+        isFetching: true,
+      },
     };
 
     mockFetchCollectionsStart = jest.fn();
 
     store = createMockStore({
       state: mockState,
-      reducers: { shop: mockReducer }
+      reducers: { shop: mockReducer },
     });
 
     const mockMatch = {
-      path: ''
+      path: '',
     };
 
     const mockProps = {
       match: mockMatch,
-      fetchCollectionsStart: mockFetchCollectionsStart
+      fetchCollectionsStart: mockFetchCollectionsStart,
     };
 
     wrapper = mount(

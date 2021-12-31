@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
   0% {
@@ -7,7 +7,7 @@ const fadeIn = keyframes`
   100% {
     opacity: 1;
   }
-`
+`;
 export const SignInAndSignUpContainer = styled.article`
   width: 850px;
   display: flex;

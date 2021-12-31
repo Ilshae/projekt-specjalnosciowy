@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
   0% {
@@ -42,4 +42,4 @@ export const CollectionItemsContainer = styled.div`
   }
 `;
 
-CollectionItemsContainer.displayName = "CollectionItemsContainer";
+CollectionItemsContainer.displayName = 'CollectionItemsContainer';
