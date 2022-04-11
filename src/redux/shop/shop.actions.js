@@ -24,7 +24,7 @@ export const fetchCollectionsFailure = errorMessage => ({
 export const fetchCollectionsStartAsync = () => {
   return dispatch => {
     dispatch(fetchCollectionsStart());
-    const collectionRef = ProductService.getProducts()
+    const collectionsMap = ProductService.getProducts()
       .then(response => {
         dispatch(fetchCollectionsSuccess(response.data));
       })
