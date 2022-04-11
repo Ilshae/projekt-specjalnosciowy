@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
   height: 70px;
@@ -53,6 +53,7 @@ export const OptionsContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   font-size: 22px;
+  display: none;
 
   @media screen and (max-width: 800px) {
     width: 80%;
@@ -76,4 +77,4 @@ export const OptionLink = styled(Link)`
   cursor: pointer;
 `;
 
-OptionLink.displayName = 'OptionLink';
+OptionLink.displayName = "OptionLink";
