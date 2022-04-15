@@ -17,7 +17,6 @@ import ShopActionTypes from "./shop.types";
 export function* fetchCollectionsAsync() {
   try {
     const collectionsRef = yield ProductService.getProducts();
-    console.log(collectionsRef.data);
     yield put(fetchCollectionsSuccess(collectionsRef.data));
   } catch (error) {
     yield put(fetchCollectionsFailure(error.message));
