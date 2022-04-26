@@ -81,14 +81,14 @@ export const CollectionFooterContainer = styled.div`
 CollectionFooterContainer.displayName = "CollectionFooterContainer";
 
 export const NameContainer = styled.span`
-  width: 90%;
+  width: 85%;
   margin-bottom: 15px;
 `;
 
 NameContainer.displayName = "NameContainer";
 
 export const PriceContainer = styled.span`
-  width: 10%;
+  width: 15%;
   text-align: right;
 `;
 

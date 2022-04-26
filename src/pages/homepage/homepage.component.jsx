@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useEffect, lazy, Suspense } from "react";
+import { connect } from "react-redux";
 
-import Directory from '../../components/directory/directory.component';
+import { fetchSectionsStart } from "../../redux/directory/directory.actions";
 
-import { HomePageContainer } from './homepage.styles';
+import Spinner from "../../components/spinner/spinner.component";
 
-const HomePage = () => (
-  <HomePageContainer>
-    <Directory />
-  </HomePageContainer>
+import { HomePageContainer } from "./homepage.styles";
+
+const Directory = lazy(() =>
+  import("../../components/directory/directory.component")
 );
 
-export default HomePage;
+export const HomePage = ({ fetchSectionsStart }) => {
+  useEffect(() => {
+    fetchSectionsStart();
+    console.log("fetch Homepage collection");
+  }, [fetchSectionsStart]);
+
+  return (
+    <HomePageContainer>
+      <Suspense fallback={<Spinner />}>
+        <Directory />
+      </Suspense>
+    </HomePageContainer>
+  );
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchSectionsStart: () => dispatch(fetchSectionsStart())
+});
+
+export default connect(null, mapDispatchToProps)(HomePage);

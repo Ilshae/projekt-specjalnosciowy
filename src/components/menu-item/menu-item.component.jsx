@@ -8,8 +8,8 @@ import {
   ContentTitle
 } from "./menu-item.styles";
 
-export const MenuItem = ({ title, image, history, linkUrl, match }) => (
-  <MenuItemContainer onClick={() => history.push(`${match.url}${linkUrl}`)}>
+export const MenuItem = ({ title, image, history }) => (
+  <MenuItemContainer onClick={() => history.push(`/shop/${title}`)}>
     <BackgroundImageContainer className="background-image" image={image} />
     <ContentContainer className="content">
       <ContentTitle>{title.toUpperCase()}</ContentTitle>

@@ -22,10 +22,12 @@ export const fetchCollectionsFailure = errorMessage => ({
 });
 
 export const fetchCollectionsStartAsync = () => {
+  console.log("fetch collections start async");
   return dispatch => {
     dispatch(fetchCollectionsStart());
     const collectionsMap = ProductService.getProducts()
       .then(response => {
+        console.log("payload collections: ", response.data);
         dispatch(fetchCollectionsSuccess(response.data));
       })
       .catch(error => {
