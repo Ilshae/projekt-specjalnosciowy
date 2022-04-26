@@ -1,3 +1,5 @@
+import DirectoryActionTypes from "./directory.types";
+
 export const INITIAL_STATE = {
   sections: [
     {
@@ -5,8 +7,12 @@ export const INITIAL_STATE = {
       image: "https://i.ibb.co/J32zjQV/womens.png",
       id: 1,
       linkUrl: "shop/womens"
-    },
-    {
+    }
+  ],
+  isFetching: false,
+  errorMessage: undefined
+  /*,
+   {
       title: "mens",
       image: "https://i.ibb.co/Q9kcXrN/mens.png",
       id: 2,
@@ -54,11 +60,28 @@ export const INITIAL_STATE = {
       id: 9,
       linkUrl: "shop/jewelry"
     }
-  ]
+  ]*/
 };
 
 const directoryReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case DirectoryActionTypes.FETCH_SECTIONS_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case DirectoryActionTypes.FETCH_SECTIONS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        sections: action.payload
+      };
+    case DirectoryActionTypes.FETCH_SECTIONS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload
+      };
     default:
       return state;
   }

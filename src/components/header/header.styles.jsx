@@ -53,7 +53,6 @@ export const OptionsContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   font-size: 22px;
-  display: none;
 
   @media screen and (max-width: 800px) {
     width: 80%;

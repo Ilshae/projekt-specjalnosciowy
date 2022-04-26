@@ -47,7 +47,6 @@ export const AddButton = styled(CustomButton)`
   opacity: 0.7;
   position: absolute;
   top: 450px;
-  display: none;
 
   @media screen and (max-width: 800px) {
     display: block;
@@ -81,15 +80,17 @@ export const CollectionFooterContainer = styled.div`
 CollectionFooterContainer.displayName = "CollectionFooterContainer";
 
 export const NameContainer = styled.span`
-  width: 90%;
+  width: 80%;
   margin-bottom: 15px;
+  padding-left: 5px;
 `;
 
 NameContainer.displayName = "NameContainer";
 
 export const PriceContainer = styled.span`
-  width: 10%;
+  width: 20%;
   text-align: right;
+  padding-right: 5px;
 `;
 
 PriceContainer.displayName = "PriceContainer";
