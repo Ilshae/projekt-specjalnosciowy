@@ -4,10 +4,7 @@ import { connect } from "react-redux";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import {
-  googleSignInStart,
-  emailSignInStart
-} from "../../redux/user/user.actions";
+import { emailSignInStart } from "../../redux/user/user.actions";
 
 import {
   SignInContainer,
@@ -15,7 +12,7 @@ import {
   ButtonsBarContainer
 } from "./sign-in.styles";
 
-const SignIn = ({ emailSignInStart, googleSignInStart }) => {
+const SignIn = ({ emailSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
     email: "",
     password: ""
@@ -66,7 +63,6 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  googleSignInStart: () => dispatch(googleSignInStart()),
   emailSignInStart: (email, password) =>
     dispatch(emailSignInStart({ email, password }))
 });
