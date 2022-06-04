@@ -76,4 +76,10 @@ export const OptionLink = styled(Link)`
   cursor: pointer;
 `;
 
+export const UserLink = styled(Link)`
+  padding: 10px 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+`;
+
 OptionLink.displayName = "OptionLink";

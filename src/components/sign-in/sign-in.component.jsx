@@ -1,49 +1,73 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-
-import { emailSignInStart } from "../../redux/user/user.actions";
-
 import {
   SignInContainer,
   SignInTitle,
   ButtonsBarContainer
 } from "./sign-in.styles";
+import AuthService from "../../services/auth.service";
 
-const SignIn = ({ emailSignInStart }) => {
-  const [userCredentials, setCredentials] = useState({
-    email: "",
-    password: ""
+const SignIn = () => {
+  const [userCredentials, setUserCredentials] = useState({
+    userName: "",
+    password: "",
+    loading: false,
+    message: ""
   });
 
-  const { email, password } = userCredentials;
+  const { userName, password } = userCredentials;
 
   const handleSubmit = async event => {
     event.preventDefault();
 
-    emailSignInStart(email, password);
+    setUserCredentials({
+      message: "",
+      loading: true
+    });
+
+    AuthService.login(userName, password).then(
+      () => {
+        window.location.href = "http://localhost:3000";
+      },
+      error => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        setUserCredentials({
+          userName: userName,
+          password: "",
+          confirmPassword: "",
+          successful: false,
+          message: resMessage
+        });
+        alert(resMessage);
+      }
+    );
   };
 
   const handleChange = event => {
     const { value, name } = event.target;
 
-    setCredentials({ ...userCredentials, [name]: value });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   return (
     <SignInContainer>
       <SignInTitle>I already have an account</SignInTitle>
-      <span>Sign in with your email and password</span>
+      <span>Sign in with your userName and password</span>
 
       <form onSubmit={handleSubmit}>
         <FormInput
-          name="email"
-          type="email"
+          name="userName"
+          type="userName"
           handleChange={handleChange}
-          value={email}
-          label="email"
+          value={userName}
+          label="User name"
           required
         />
         <FormInput
@@ -51,7 +75,7 @@ const SignIn = ({ emailSignInStart }) => {
           type="password"
           value={password}
           handleChange={handleChange}
-          label="password"
+          label="Password"
           required
         />
         <ButtonsBarContainer>
@@ -62,9 +86,4 @@ const SignIn = ({ emailSignInStart }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  emailSignInStart: (email, password) =>
-    dispatch(emailSignInStart({ email, password }))
-});
-
-export default connect(null, mapDispatchToProps)(SignIn);
+export default SignIn;

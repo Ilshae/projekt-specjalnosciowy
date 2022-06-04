@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
 
-import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
+import FormInput from "../form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.component";
+import { SignUpContainer, SignUpTitle } from "./sign-up.styles";
+import AuthService from "../../services/auth.service";
 
-import { signUpStart } from '../../redux/user/user.actions';
-
-import { SignUpContainer, SignUpTitle } from './sign-up.styles';
-
-const SignUp = ({ signUpStart }) => {
+const SignUp = () => {
   const [userCredentials, setUserCredentials] = useState({
-    displayName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    successful: false,
+    message: ""
   });
 
-  const { displayName, email, password, confirmPassword } = userCredentials;
+  const { userName, email, password, confirmPassword } = userCredentials;
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -26,10 +25,36 @@ const SignUp = ({ signUpStart }) => {
       return;
     }
 
-    signUpStart({ displayName, email, password });
+    AuthService.register(userName, email, password).then(
+      response => {
+        setUserCredentials({
+          message: response.data.message,
+          successful: true
+        });
+        AuthService.login(userName, password);
+        window.location.href = "http://localhost:3000";
+      },
+      error => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        setUserCredentials({
+          userName: userName,
+          email: email,
+          password: "",
+          confirmPassword: "",
+          successful: false,
+          message: resMessage
+        });
+        alert(resMessage);
+      }
+    );
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
 
     setUserCredentials({ ...userCredentials, [name]: value });
@@ -42,10 +67,10 @@ const SignUp = ({ signUpStart }) => {
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput
           type="text"
-          name="displayName"
-          value={displayName}
+          name="userName"
+          value={userName}
           onChange={handleChange}
-          label="Display Name"
+          label="User name"
           required
         />
         <FormInput
@@ -69,7 +94,7 @@ const SignUp = ({ signUpStart }) => {
           name="confirmPassword"
           value={confirmPassword}
           onChange={handleChange}
-          label="Confirm Password"
+          label="Confirm password"
           required
         />
         <CustomButton type="submit">SIGN UP</CustomButton>
@@ -78,8 +103,4 @@ const SignUp = ({ signUpStart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
-});
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;
