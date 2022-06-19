@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
 import UserService from "../../services/user.service";
+<<<<<<< HEAD
 import EventBus from "../../utils/event-bus.component";
+=======
+>>>>>>> 2801228 (Admin board)
 
 export default class BoardAdmin extends Component {
   constructor(props) {
@@ -20,18 +23,7 @@ export default class BoardAdmin extends Component {
         });
       },
       error => {
-        this.setState({
-          content:
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString()
-        });
-
-        if (error.response && error.response.status === 401) {
-          EventBus.dispatch("logout");
-        }
+        window.location.href = "http://localhost:3000";
       }
     );
   }
