@@ -17,6 +17,9 @@ const SignInAndSignUpPage = lazy(() =>
 );
 const CheckoutPage = lazy(() => import("./pages/checkout/checkout.component"));
 const UserPage = lazy(() => import("./pages/userpage/userpage.component"));
+const AdminBoard = lazy(() =>
+  import("./pages/adminboard/adminboard.component")
+);
 
 const App = () => {
   let [user, setUser] = useState(undefined);
@@ -35,6 +38,7 @@ const App = () => {
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={HomePage} />
+            <Route path="/admin" component={AdminBoard} />
             <Route exact path={userPath} component={UserPage} />
             <Route path="/shop" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />

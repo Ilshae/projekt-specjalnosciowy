@@ -27,6 +27,9 @@ export const Header = ({ user, userPath, hidden }) => (
       Ingrid
     </BrandContainer>
     <OptionsContainer>
+      {user && user.roles.includes("ROLE_ADMIN") && (
+        <UserLink to="/admin">Admin Board</UserLink>
+      )}{" "}
       {user ? <UserLink to={userPath}>{user.username}'S PAGE</UserLink> : ""}
       <OptionLink to="/shop">SHOP</OptionLink>
       {user ? (
